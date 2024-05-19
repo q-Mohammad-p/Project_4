@@ -1,7 +1,3 @@
-//
-// Created by mobile kavosh on 5/19/2024.
-//
-
 #ifndef PROJECT_4_2_ADDRESS_H
 #define PROJECT_4_2_ADDRESS_H
 
