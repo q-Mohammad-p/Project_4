@@ -1,7 +1,7 @@
 
 #include "person.h"
 
-inline Person &Person::operator=(const Person &p1) {
+    Person &Person::operator=(const Person &p1) {
     name = p1.name;
     id = p1.id;
     address = p1.address;
