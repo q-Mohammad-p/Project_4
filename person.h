@@ -14,7 +14,7 @@ private:
 public:
     Person() : name("unknown"), id("unknown") {};
 
-    Person(string &name, string &id, const Address &address) :
+    Person(string name, string id, const Address &address) :
             name(name), id(id), address(address) {};
 
     Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};
