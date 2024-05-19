@@ -37,14 +37,12 @@ bool Person::validate() {
     }
     int i = 2;
     for (; i < id.length() - 5; ++i) {
-//        cout<<i<<endl;
         if (id[i] >= '0' and id[i] <= '9') {
             cout << "INVALID";
             exit(0);
         }
     }
     for (; i < id.length(); i++) {
-        cout << i << endl;
         if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6')) {
             cout << id[i] << " is invalid";
             exit(0);
