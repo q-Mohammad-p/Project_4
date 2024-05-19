@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include "address.h"
+#include <cstring>
+#include <string>
 using namespace std;
 
 class Person {
@@ -24,6 +26,8 @@ public:
     friend istream &operator>>(istream &, Person &);
 
     Person &operator=(const Person &p1);
+
+    bool validate();
 };
 
 

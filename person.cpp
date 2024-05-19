@@ -1,7 +1,7 @@
 
 #include "person.h"
 
-    Person &Person::operator=(const Person &p1) {
+Person &Person::operator=(const Person &p1) {
     name = p1.name;
     id = p1.id;
     address = p1.address;
@@ -20,4 +20,20 @@ inline istream &operator>>(istream &is, Person &p1) {
     is >> p1.id;
     is >> p1.address;
     return is;
+}
+
+bool Person::validate() {
+    if (id.length() < 8 or id.length()>10) {
+        cout << "The ID is in invalid\n";
+        exit(0);
+    }
+    if (id[0] != '8' and id[0] != '9') {
+        cout << "The ID is in invalid\n";
+        exit(0);
+
+    } else if (id[1] < '4' and id[0] == '8') {
+        cout << "The ID is in invalid\n";
+        exit(0);
+    }
+    return false;
 }
