@@ -40,7 +40,7 @@ public:
 
 
 };
-};
+
 
 
 #endif //PROJECT_4_2_ADDRESS_H
