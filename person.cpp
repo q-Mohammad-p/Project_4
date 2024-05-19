@@ -23,7 +23,7 @@ inline istream &operator>>(istream &is, Person &p1) {
 }
 
 bool Person::validate() {
-    if (id.length() < 8 or id.length()>10) {
+    if (id.length() < 8 or id.length() > 10) {
         cout << "The ID is in invalid\n";
         exit(0);
     }
@@ -35,5 +35,22 @@ bool Person::validate() {
         cout << "The ID is in invalid\n";
         exit(0);
     }
+    int i = 2;
+    for (; i < id.length() - 5; ++i) {
+//        cout<<i<<endl;
+        if (id[i] >= '0' and id[i] <= '9') {
+            cout << "INVALID";
+            exit(0);
+        }
+    }
+    for (; i < id.length(); i++) {
+        cout << i << endl;
+        if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6')) {
+            cout << id[i] << " is invalid";
+            exit(0);
+        }
+    }
+
+
     return false;
 }
