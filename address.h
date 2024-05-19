@@ -26,8 +26,6 @@ public:
 
     void set_street(const string &name) { street = name; };
 
-//    void set_all_address(const string, const string, const string);
-
     string get_country() const { return country; };
 
     string get_city() const { return city; };
