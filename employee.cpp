@@ -23,3 +23,14 @@ inline istream &operator>>(istream &istream1, Employee &e1) {
     istream1 >> e1.salaryPerHour;
     return istream1;
 }
+
+Employee &Employee::operator=(const Employee &e1) {
+    name = e1.name;
+    id = e1.id;
+    address = e1.address;
+    workToDo = e1.workToDo;
+    workDone = e1.workDone;
+    hourWork = e1.hourWork;
+    salaryPerHour = e1.salaryPerHour;
+    return *this;
+}

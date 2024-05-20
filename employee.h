@@ -32,6 +32,8 @@ public:
     friend ostream &operator<<(ostream &os, const Employee &e1);
 
     friend istream &operator>>(istream &istream1, Employee &e1);
+
+    Employee & operator = (const Employee& e1);
 };
 
 
