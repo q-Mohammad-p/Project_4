@@ -16,8 +16,8 @@ private:
 public:
     Person() : name("unknown"), id("unknown") {};
 
-    Person(string name, string id, const Address &address) :
-            name(name), id(id), address(address) {};
+    Person(string Name, string ID, const Address &address1) :
+            name(Name), id(ID), address(address1) {validate();};
 
     Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};
 
