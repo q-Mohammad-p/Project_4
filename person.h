@@ -31,4 +31,4 @@ public:
 };
 
 
-#endif //PROJECT_4_2_PERSON_H
+#endif
