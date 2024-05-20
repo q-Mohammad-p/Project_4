@@ -33,9 +33,8 @@ public:
 
     friend istream &operator>>(istream &istream1, Employee &e1);
 
-    Employee & operator = (const Employee& e1);
+    Employee &operator=(const Employee &e1);
 };
-
 
 
 #endif
