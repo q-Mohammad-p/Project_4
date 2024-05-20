@@ -28,6 +28,10 @@ public:
                                       hourWork(other.hourWork), salaryPerHour(other.salaryPerHour),
                                       workToDo(other.workToDo),
                                       workDone(other.workDone) {};
+
+    friend ostream &operator<<(ostream &os, const Employee& e1);
+
+    friend istream &operator>>(istream &istream1, Employee& e1);
 };
 
 
