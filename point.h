@@ -25,6 +25,14 @@ public:
     }
 
     void operator /=(int num);
+
+    Point& operator =(const Point& point);
+
+    friend bool operator >=(const Point& p1, const Point& p2){
+        if((p1.x*p1.x)+(p1.y*p1.y) >= (p2.x*p2.x)+(p2.y*p2.y))
+            return true;
+        else return false;
+    }
 };
 
 #endif
