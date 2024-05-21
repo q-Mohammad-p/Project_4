@@ -10,3 +10,9 @@ void Point::operator/=(int num) {
     x = x / num;
     y = y / num;
 }
+
+Point& Point::operator=(const Point &point) {
+    x = point.x;
+    y = point.y;
+    return *this;
+}
