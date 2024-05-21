@@ -19,7 +19,7 @@ public:
     Person(string Name, string ID, const Address &address1) :
             name(Name), id(ID), address(address1) {validate();};
 
-    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};
+    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {if (!validate()) exit(0);};
 
     friend ostream &operator<<(ostream &, const Person &);
 
