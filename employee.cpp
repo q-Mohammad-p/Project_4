@@ -84,8 +84,13 @@ bool Employee::validate() const {
 }
 
 float Employee::calculateSalary() const {
-    float percent = (float(workToDo) /float( workDone + workToDo))* 100 ;
-    float salary = float (hourWork * salaryPerHour);
-    salary = salary - salary*percent/100;
+    float percent = (float(workToDo) / float(workDone + workToDo)) * 100;
+    float salary = float(hourWork * salaryPerHour);
+    salary = salary - salary * percent / 100;
     return salary;
+}
+
+float Employee::efficiency() const {
+    float percent = (float(workDone) / float(workDone + workToDo)) * 100 / float(hourWork);
+    return percent;
 }

@@ -61,6 +61,8 @@ public:
     bool validate()const;
 
     float calculateSalary() const;
+
+    float efficiency() const;
 };
 
 
