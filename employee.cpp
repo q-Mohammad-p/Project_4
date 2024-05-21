@@ -1,5 +1,17 @@
 #include "employee.h"
 
+
+Employee::Employee(string name, string id, Address address, int hourWork,
+                   int salaryPerHour, int workToDo, int workDone) :
+        name(name), id(id), address(address), hourWork(hourWork),
+        salaryPerHour(salaryPerHour), workToDo(workToDo), workDone(workDone) { if (!validate()) cout << "Invalid id"; };
+
+
+Employee::Employee(const Employee &other) : name(other.name), id(other.id), address(other.address),
+                                            hourWork(other.hourWork), salaryPerHour(other.salaryPerHour),
+                                            workToDo(other.workToDo),
+                                            workDone(other.workDone) {};
+
 inline ostream &operator<<(ostream &os, const Employee &e1) {
     os << e1.name << " / " << e1.id << " / " << e1.address << " \nWork to do :  "
        << e1.workToDo << "\nWork done" << e1.workDone << "\nWork hour : " << e1.hourWork
@@ -48,25 +60,32 @@ bool Employee::validate() const {
         cout << "The ID is in invaliddd\n";
         return false;
     }
-    if(id[2] != '*'){
+    if (id[2] != '*') {
         cout << "The ID is in invalidddd\n";
         return false;
     }
     int i = 3;
     for (; i < id.length() - 5; ++i) {
         if (id[i] >= '0' and id[i] <= '9') {
-            cout<<i;
+            cout << i;
             cout << "INVALID";
             return false;
         }
     }
     for (; i < id.length(); i++) {
         if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6')) {
-            cout<<i;
+            cout << i;
             cout << id[i] << " is invalid";
             return false;
         }
     }
 
     return true;
+}
+
+float Employee::calculateSalary() const {
+    float percent = (float(workToDo) /float( workDone + workToDo))* 100 ;
+    float salary = float (hourWork * salaryPerHour);
+    salary = salary - salary*percent/100;
+    return salary;
 }
