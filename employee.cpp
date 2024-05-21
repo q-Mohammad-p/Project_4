@@ -34,3 +34,39 @@ Employee &Employee::operator=(const Employee &e1) {
     salaryPerHour = e1.salaryPerHour;
     return *this;
 }
+
+bool Employee::validate() const {
+    if (id.length() < 8 or id.length() > 10) {
+        cout << "The ID is in invalid\n";
+        return false;
+    }
+    if (id[0] > '9' or id[0] < '8') {
+        cout << "The ID is in invalidd\n";
+        return false;
+
+    } else if (id[1] < '4' and id[0] == '8') {
+        cout << "The ID is in invaliddd\n";
+        return false;
+    }
+    if(id[2] != '*'){
+        cout << "The ID is in invalidddd\n";
+        return false;
+    }
+    int i = 3;
+    for (; i < id.length() - 5; ++i) {
+        if (id[i] >= '0' and id[i] <= '9') {
+            cout<<i;
+            cout << "INVALID";
+            return false;
+        }
+    }
+    for (; i < id.length(); i++) {
+        if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6')) {
+            cout<<i;
+            cout << id[i] << " is invalid";
+            return false;
+        }
+    }
+
+    return true;
+}

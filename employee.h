@@ -21,7 +21,7 @@ public:
     Employee(string name, string id, Address address, int hourWork,
              int salaryPerHour, int workToDo, int workDone) :
             name(name), id(id), address(address), hourWork(hourWork),
-            salaryPerHour(salaryPerHour), workToDo(workToDo), workDone(workDone) {};
+            salaryPerHour(salaryPerHour), workToDo(workToDo), workDone(workDone) {if (!validate()) exit(0);};
 
 
     Employee(const Employee &other) : name(other.name), id(other.id), address(other.address),
@@ -62,6 +62,8 @@ public:
     int get_workToDo()const {return workToDo;};
 
     int get_workDone()const {return workDone;};
+
+    bool validate()const;
 };
 
 
