@@ -13,7 +13,7 @@ private:
 public:
     Address() : country("unknown"), city("unknown"), street("unknown ") {};
 
-    Address(string &country, string &city, string &street) :
+    Address(string country, string city, string street) :
             country(country), city(city), street(street) {};
 
     friend ostream &operator<<(ostream &os, const Address &object);
@@ -36,5 +36,4 @@ public:
 };
 
 
-
-#endif //PROJECT_4_2_ADDRESS_H
+#endif
