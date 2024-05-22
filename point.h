@@ -42,6 +42,8 @@ public:
 
     void set_y(int num){y = num;};
 
+    friend class Rectangle;
+
 };
 
 
