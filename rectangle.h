@@ -15,10 +15,13 @@ public:
 
     Rectangle(const Rectangle &rect) : startPoint(rect.startPoint), width(rect.width), height(rect.height) {};
 
-    Rectangle &operator+=(const Rectangle& rect);
+    Rectangle &operator+=(const Rectangle &rect);
 
-    int get_width() const{return width;};
-    int get_height() const{return height;};
+    Rectangle &operator-=(const Rectangle& rect);
+
+    int get_width() const { return width; };
+
+    int get_height() const { return height; };
 };
 
 #endif
