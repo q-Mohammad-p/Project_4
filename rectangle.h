@@ -17,7 +17,7 @@ public:
 
     Rectangle &operator+=(const Rectangle &rect);
 
-    Rectangle &operator-=(const Rectangle& rect);
+    Rectangle &operator-=(const Rectangle &rect);
 
     int get_width() const { return width; };
 
