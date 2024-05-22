@@ -19,6 +19,15 @@ public:
 
     Rectangle &operator-=(const Rectangle &rect);
 
+    friend Rectangle operator/(const Rectangle &r1, const Rectangle &r2) {
+        Point temPoint((r1.startPoint.x + r2.startPoint.x) / 2,
+                   (r1.startPoint.y + r2.startPoint.y) / 2);
+        int tempWidth = r1.width / r2.width;
+        int tempHeight = r1.height / r2.height;
+
+        return Rectangle(temPoint, tempWidth, tempHeight);
+    }
+
     int get_width() const { return width; };
 
     int get_height() const { return height; };
