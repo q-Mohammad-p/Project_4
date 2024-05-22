@@ -4,8 +4,7 @@
 
 #include <iostream>
 #include "address.h"
-#include <cstring>
-#include <string>
+
 using namespace std;
 
 class Person {
@@ -17,9 +16,14 @@ public:
     Person() : name("unknown"), id("unknown") {};
 
     Person(string Name, string ID, const Address &address1) :
-            name(Name), id(ID), address(address1) {validate();};
+            name(Name), id(ID), address(address1) {
+        if (!validate()) {
+            cout << "Invalid id";
+            exit(0);
+        }
+    };
 
-    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {if (!validate()) exit(0);};
+    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};
 
     friend ostream &operator<<(ostream &, const Person &);
 

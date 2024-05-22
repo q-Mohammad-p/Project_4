@@ -4,7 +4,12 @@
 Employee::Employee(string name, string id, Address address, int hourWork,
                    int salaryPerHour, int workToDo, int workDone) :
         name(name), id(id), address(address), hourWork(hourWork),
-        salaryPerHour(salaryPerHour), workToDo(workToDo), workDone(workDone) { if (!validate()) cout << "Invalid id"; };
+        salaryPerHour(salaryPerHour), workToDo(workToDo), workDone(workDone) {
+    if (!validate()) {
+        cout << "Invalid id";
+        exit(0);
+    }
+};
 
 
 Employee::Employee(const Employee &other) : name(other.name), id(other.id), address(other.address),
@@ -48,36 +53,23 @@ Employee &Employee::operator=(const Employee &e1) {
 }
 
 bool Employee::validate() const {
-    if (id.length() < 8 or id.length() > 10) {
-        cout << "The ID is in invalid\n";
+    if (id.length() < 8 or id.length() > 10)
+        return false;
+    if (id[0] > '9' or id[0] < '8')
+        return false;
+    else if (id[1] < '4' and id[0] == '8') {
         return false;
     }
-    if (id[0] > '9' or id[0] < '8') {
-        cout << "The ID is in invalidd\n";
+    if (id[2] != '*')
         return false;
-
-    } else if (id[1] < '4' and id[0] == '8') {
-        cout << "The ID is in invaliddd\n";
-        return false;
-    }
-    if (id[2] != '*') {
-        cout << "The ID is in invalidddd\n";
-        return false;
-    }
     int i = 3;
     for (; i < id.length() - 5; ++i) {
-        if (id[i] >= '0' and id[i] <= '9') {
-            cout << i;
-            cout << "INVALID";
+        if (id[i] >= '0' and id[i] <= '9')
             return false;
-        }
     }
     for (; i < id.length(); i++) {
-        if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6')) {
-            cout << i;
-            cout << id[i] << " is invalid";
+        if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6'))
             return false;
-        }
     }
 
     return true;
