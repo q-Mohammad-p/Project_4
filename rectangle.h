@@ -3,6 +3,8 @@
 
 #include "point.h"
 
+#include <cmath>
+
 class Rectangle {
 private:
     Point startPoint;
@@ -21,7 +23,7 @@ public:
 
     friend Rectangle operator/(const Rectangle &r1, const Rectangle &r2) {
         Point temPoint((r1.startPoint.x + r2.startPoint.x) / 2,
-                   (r1.startPoint.y + r2.startPoint.y) / 2);
+                       (r1.startPoint.y + r2.startPoint.y) / 2);
         int tempWidth = r1.width / r2.width;
         int tempHeight = r1.height / r2.height;
 
@@ -31,6 +33,16 @@ public:
     int get_width() const { return width; };
 
     int get_height() const { return height; };
+
+    Point get_startPoint() const { return startPoint; };
+
+    void set_width(int num) { width = num; };
+
+    void set_height(int num) { height = num; };
+
+    void set_startPoint(const Point &p) { startPoint = p; };
+
+
 };
 
 #endif
