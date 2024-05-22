@@ -13,9 +13,9 @@ private:
     string id;
     Address address;
 public:
-    Person() : name("unknown"), id("unknown") {};
+    Person() : name("unknown"), id("unknown") {};   //No arg constructor
 
-    Person(string Name, string ID, const Address &address1) :
+    Person(string Name, string ID, const Address &address1) :  // Three arg constructor
             name(Name), id(ID), address(address1) {
         if (!validate()) {
             cout << "Invalid id";
@@ -23,15 +23,15 @@ public:
         }
     };
 
-    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};
+    Person(const Person &p1) : name(p1.name), id(p1.id), address(p1.address) {};  //Copy constructor
 
-    friend ostream &operator<<(ostream &, const Person &);
+    friend ostream &operator<<(ostream &, const Person &);  //overloading << operator
 
-    friend istream &operator>>(istream &, Person &);
+    friend istream &operator>>(istream &, Person &);   //overloading >> operator
 
-    Person &operator=(const Person &p1);
+    Person &operator=(const Person &p1);  // overloading assigment operator
 
-    bool validate();
+    bool validate();     // Checks out the id
 };
 
 

@@ -15,22 +15,22 @@ public:
     string id;
     Address address;
 
-    Employee() : name("unknown"), id("unknown"),
+    Employee() : name("unknown"), id("unknown"),      //No arg constructor
                  hourWork(0), salaryPerHour(0), workDone(0), workToDo(0) {};
 
     Employee(string name, string id, Address address, int hourWork,
              int salaryPerHour, int workToDo, int workDone);
 
 
-    Employee(const Employee &other);
+    Employee(const Employee &other);    // Copy constructor
 
-    friend ostream &operator<<(ostream &os, const Employee &e1);
+    friend ostream &operator<<(ostream &os, const Employee &e1);  //overloading << operator
 
-    friend istream &operator>>(istream &istream1, Employee &e1);
+    friend istream &operator>>(istream &istream1, Employee &e1);  //overloading >> operator
 
-    Employee &operator=(const Employee &e1);
+    Employee &operator=(const Employee &e1);   // overloading assigment operator
 
-    void set_name(const string& Name){name = Name;};
+    void set_name(const string& Name){name = Name;};     //setter functions
 
     void set_id(const string& ID){id = ID;};
 
@@ -44,7 +44,7 @@ public:
 
     void set_workDone(int done){workDone = done;};
 
-    string get_name() const{return name;};
+    string get_name() const{return name;};             //getter functions
 
     string get_id()const {return id;};
 
@@ -58,7 +58,7 @@ public:
 
     int get_workDone()const {return workDone;};
 
-    bool validate()const;
+    bool validate()const;             //Checks out id
 
     float calculateSalary() const;
 

@@ -11,20 +11,20 @@ Employee::Employee(string name, string id, Address address, int hourWork,
     }
 };
 
-
+// Copy constructor
 Employee::Employee(const Employee &other) : name(other.name), id(other.id), address(other.address),
                                             hourWork(other.hourWork), salaryPerHour(other.salaryPerHour),
                                             workToDo(other.workToDo),
                                             workDone(other.workDone) {};
 
-inline ostream &operator<<(ostream &os, const Employee &e1) {
+inline ostream &operator<<(ostream &os, const Employee &e1) {   //prints all data
     os << e1.name << " / " << e1.id << " / " << e1.address << " \nWork to do :  "
        << e1.workToDo << "\nWork done" << e1.workDone << "\nWork hour : " << e1.hourWork
        << "\nSalary per hour : " << e1.salaryPerHour;
     return os;
 }
 
-inline istream &operator>>(istream &istream1, Employee &e1) {
+inline istream &operator>>(istream &istream1, Employee &e1) {  //gets all data
     cout << "Name";
     istream1 >> e1.name;
     cout << "ID : ";
@@ -41,7 +41,7 @@ inline istream &operator>>(istream &istream1, Employee &e1) {
     return istream1;
 }
 
-Employee &Employee::operator=(const Employee &e1) {
+Employee &Employee::operator=(const Employee &e1) {  //overloading assigment operator
     name = e1.name;
     id = e1.id;
     address = e1.address;
@@ -53,21 +53,25 @@ Employee &Employee::operator=(const Employee &e1) {
 }
 
 bool Employee::validate() const {
-    if (id.length() < 8 or id.length() > 10)
+    if (id.length() < 8 or id.length() > 10)  // Checks the id length
         return false;
-    if (id[0] > '9' or id[0] < '8')
+
+    if (id[0] > '9' or id[0] < '8')         // First char must be 8 or 9
         return false;
-    else if (id[1] < '4' and id[0] == '8') {
+
+    if ((id[0] == '9' and (id[1] > '9' or id[1] < '0')) or  // Checks the second char
+    (id[0] == '8' and (id[1] > '9' or id[1] < '4')))
         return false;
-    }
-    if (id[2] != '*')
+
+    if (id[2] != '*')     //The third char must be *
         return false;
+
     int i = 3;
-    for (; i < id.length() - 5; ++i) {
+    for (; i < id.length() - 5; ++i) {         //Checks the non-numeric chars after *
         if (id[i] >= '0' and id[i] <= '9')
             return false;
     }
-    for (; i < id.length(); i++) {
+    for (; i < id.length(); i++) {             //Checks 5 last numbers
         if ((id[i] > '9' or id[i] < '0') or (id[i] > '3' and id[i] <= '6'))
             return false;
     }
@@ -76,9 +80,10 @@ bool Employee::validate() const {
 }
 
 float Employee::calculateSalary() const {
-    float percent = (float(workToDo) / float(workDone + workToDo)) * 100;
-    float salary = float(hourWork * salaryPerHour);
-    salary = salary - salary * percent / 100;
+    float percent = (float(workToDo) / float(workDone + workToDo)) * 100;    //calculates the percent of the work
+                                                                             //that hasn't done yet
+    float salary = float(hourWork * salaryPerHour);                          //calculates salary  without penalty
+    salary = salary - salary * percent / 100;                                //applies penalty
     return salary;
 }
 

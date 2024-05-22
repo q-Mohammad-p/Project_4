@@ -11,23 +11,23 @@ private:
     int width;
     int height;
 public:
-    Rectangle() : width(0), height(0), startPoint(0, 0) {};
+    Rectangle() : width(0), height(0), startPoint(0, 0) {};  //no arg construvtor
 
     Rectangle(Point sp, int w, int h) : startPoint(sp), width(w), height(h) {};
-
+    //copy constructor
     Rectangle(const Rectangle &rect) : startPoint(rect.startPoint), width(rect.width), height(rect.height) {};
 
-    Rectangle &operator+=(const Rectangle &rect);
+    Rectangle &operator+=(const Rectangle &rect);  //overloading += operator
 
-    Rectangle &operator-=(const Rectangle &rect);
+    Rectangle &operator-=(const Rectangle &rect); //overloading -= operator
 
-    friend Rectangle operator/(const Rectangle &r1, const Rectangle &r2) {
-        Point temPoint((r1.startPoint.x + r2.startPoint.x) / 2,
-                       (r1.startPoint.y + r2.startPoint.y) / 2);
-        int tempWidth = r1.width / r2.width;
-        int tempHeight = r1.height / r2.height;
+    friend Rectangle operator/(const Rectangle &r1, const Rectangle &r2) {   //overloading / operator
+        Point temPoint((r1.startPoint.x + r2.startPoint.x) / 2,           // calculates the average of two points
+                       (r1.startPoint.y + r2.startPoint.y) / 2);          // and assign it tow a new point
+        int tempWidth = r1.width / r2.width;  //new width
+        int tempHeight = r1.height / r2.height;  //new height
 
-        return Rectangle(temPoint, tempWidth, tempHeight);
+        return Rectangle(temPoint, tempWidth, tempHeight);   //returns a new rectangle whit new data
     }
 
     int get_width() const { return width; };
@@ -42,7 +42,7 @@ public:
 
     void set_startPoint(const Point &p) { startPoint = p; };
 
-    friend bool collisionDetection(const Rectangle& r1, const Rectangle& r2){
+    friend bool collisionDetection(const Rectangle& r1, const Rectangle& r2){    //checks the rectangle collision
         if (r1.startPoint.x < r2.startPoint.x + r2.width and
             r1.startPoint.x + r1.width > r2.startPoint.x and
             r1.startPoint.y <r2.startPoint.y + r2.height and
