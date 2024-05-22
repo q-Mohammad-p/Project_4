@@ -42,7 +42,15 @@ public:
 
     void set_startPoint(const Point &p) { startPoint = p; };
 
-
+    friend bool collisionDetection(const Rectangle& r1, const Rectangle& r2){
+        if (r1.startPoint.x < r2.startPoint.x + r2.width and
+            r1.startPoint.x + r1.width > r2.startPoint.x and
+            r1.startPoint.y <r2.startPoint.y + r2.height and
+            r1.height + r1.startPoint.y > r2.startPoint.y) {
+            return true;
+        }
+        return false;
+    }
 };
 
 #endif
