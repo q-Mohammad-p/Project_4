@@ -2,7 +2,7 @@
 #include "rectangle.h"
 
 Rectangle& Rectangle::operator+=(const Rectangle &rect) {
-    if(startPoint.get_x() == rect.startPoint.get_x() and startPoint.get_y() == rect.startPoint.get_y()){
+    if(startPoint.x == rect.startPoint.x and startPoint.y == rect.startPoint.y){
     if(rect.height > height)
         height = rect.height;
     if(rect.width > width)
@@ -15,7 +15,7 @@ Rectangle& Rectangle::operator+=(const Rectangle &rect) {
 }
 
 Rectangle &Rectangle::operator-=(const Rectangle &rect) {
-    if(startPoint.get_x() == rect.startPoint.get_x() and startPoint.get_y() == rect.startPoint.get_y()){
+    if(startPoint.x == rect.startPoint.x and startPoint.y == rect.startPoint.y){
         if(rect.height < height)
             height = rect.height;
         if(rect.width < width)
