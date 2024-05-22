@@ -1,7 +1,7 @@
 #ifndef PROJECT_4_2_RECTANGLE_H
 #define PROJECT_4_2_RECTANGLE_H
 
-#include "point.cpp"
+#include "point.h"
 
 class Rectangle {
 private:
@@ -15,7 +15,10 @@ public:
 
     Rectangle(const Rectangle &rect) : startPoint(rect.startPoint), width(rect.width), height(rect.height) {};
 
+    Rectangle &operator+=(const Rectangle& rect);
 
+    int get_width() const{return width;};
+    int get_height() const{return height;};
 };
 
 #endif
